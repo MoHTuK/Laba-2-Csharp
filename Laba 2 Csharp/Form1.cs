@@ -14,7 +14,8 @@ namespace Laba_2_Csharp
     {
         Class1 main = new Class1();
         bool firstTime = true;
-        
+        bool firstTimeParalelogram = true;
+
         public Form1()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace Laba_2_Csharp
                 main.Arr = new Class1.Quadrangle[Convert.ToInt32(numericUpDown1.Value)];
                 firstTime = false;
             }
-                main.Qdr_area(textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox10);
+                main.ArrInput(textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox10);
             
         }
 
@@ -54,10 +55,35 @@ namespace Laba_2_Csharp
             main.ArrResize(Convert.ToInt32(numericUpDown1.Value));
         }
 
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            main.Arr1Resize(Convert.ToInt32(numericUpDown2.Value));
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
           main.MediumArea(textBox10, (int)numericUpDown1.Value);
          
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (firstTimeParalelogram)
+            {
+                main.Arr1 = new Class1.Paralelogram[Convert.ToInt32(numericUpDown2.Value)];
+                firstTimeParalelogram = false;
+            }
+            main.ArrParalelInput(textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox10);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            main.MaxMinArea(textBox10, Convert.ToInt32(numericUpDown2.Value));
         }
     }
 }

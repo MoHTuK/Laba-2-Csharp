@@ -15,8 +15,11 @@ namespace Laba_2_Csharp
         int k = 0;
         int sum=0;
         private Quadrangle[] arr;
+        private Paralelogram[] arr1;
+
 
         public Quadrangle[] Arr { get => arr; set => arr = value; }
+        public Paralelogram[] Arr1 { get => arr1; set => arr1 = value; }
 
         public void TEST(TextBox field1, TextBox field2, TextBox field3, TextBox field4, TextBox field5, TextBox field6, TextBox field7, TextBox field8, TextBox field9)
         {
@@ -51,7 +54,12 @@ namespace Laba_2_Csharp
             Array.Resize(ref arr, v);
         }
 
-        public void Qdr_area(TextBox field1, TextBox field2, TextBox field3, TextBox field4, TextBox field5, TextBox field6, TextBox field7, TextBox field8, TextBox field10)
+        internal void Arr1Resize(int v)
+        {
+            Array.Resize(ref arr1, v);
+        }
+
+        public void ArrInput(TextBox field1, TextBox field2, TextBox field3, TextBox field4, TextBox field5, TextBox field6, TextBox field7, TextBox field8, TextBox field10)
         {
             try
             {
@@ -62,13 +70,26 @@ namespace Laba_2_Csharp
                 field10.Text = "Нельзя присвоить больше елементов";
             }
         }
-        public void MediumArea(TextBox field1,int v)
+
+        public void ArrParalelInput(TextBox field1, TextBox field2, TextBox field3, TextBox field4, TextBox field5, TextBox field6, TextBox field7, TextBox field8, TextBox field10)
+        {
+            try
+            {
+                Arr1[k++] = new Paralelogram(Convert.ToInt16(field1.Text), Convert.ToInt16(field2.Text), Convert.ToInt16(field3.Text), Convert.ToInt16(field4.Text), Convert.ToInt16(field5.Text), Convert.ToInt16(field6.Text), Convert.ToInt16(field7.Text), Convert.ToInt16(field8.Text));
+            }
+            catch (IndexOutOfRangeException)
+            {
+                field10.Text = "Нельзя присвоить больше елементов";
+            }
+        }
+
+            public void MediumArea(TextBox field1,int N)
         {
             double mediumArea=0;
             try
             {
                 k = 0;
-                for (int i = 0; i < v; i++)
+                for (int i = 0; i < N; i++)
                 {
                     sum = sum + Arr[k++].getArea();
                 }
@@ -83,6 +104,35 @@ namespace Laba_2_Csharp
 
             }
         }
+        
+        public void MaxMinArea(TextBox field,int N)
+        {
+            try
+            {
+                int max = Arr1[0].getArea(), min = Arr1[0].getArea();
+
+                k = 0;
+                for (int i = 0; i < N; i++)
+                {
+                    if (Arr1[i].getArea() > max)
+                        max = Arr1[i].getArea();
+
+                    if (Arr1[i].getArea() < min)
+                        min = Arr1[i].getArea();
+                }
+
+
+
+
+                field.Text = "Максимальная площадь = " + max + "\r\n Минимальная площадь = " + min;
+            }
+            catch(Exception)
+            {
+                field.Text = "Ошибка Вводите все заново";
+            }
+        }
+
+
 
 
 
@@ -179,7 +229,7 @@ namespace Laba_2_Csharp
 
         }
 
-        class Paralelogram : Quadrangle
+        public class Paralelogram : Quadrangle
         {
             
             public int AB1, BC1, CD1, DA1;
