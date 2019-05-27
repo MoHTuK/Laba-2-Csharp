@@ -238,51 +238,16 @@ namespace Laba_2_Csharp
             {
 
             }
-            public int lineAB1()
-            {
-
-
-                AB1 = Convert.ToInt32(Math.Sqrt(Math.Pow(y2 - y1, 2) + Math.Pow(x2 - x1, 2)));
-
-                return AB1;
-            }
-
-            public int lineBC1()
-            {
-
-
-                BC1 = Convert.ToInt32(Math.Sqrt(Math.Pow(y3 - y2, 2) + Math.Pow(x3 - x2, 2)));
-
-                return BC1;
-            }
-
-            public int lineCD1()
-            {
-
-
-                CD1 = Convert.ToInt32(Math.Sqrt(Math.Pow(y4 - y3, 2) + Math.Pow(x4 - x3, 2)));
-
-                return CD1;
-            }
-            
-            public int lineDA1()
-            {
-
-
-                DA1 = Convert.ToInt32(Math.Sqrt(Math.Pow(y1 - y4, 2) + Math.Pow(x1 - x4, 2)));
-
-                return DA1;
-            }
-
+           
             
 
             public string check_paralel()
             {
-                lineDA1();
-                lineCD1();
-                lineBC1();
-                lineAB1();
-                if (AB1 == CD1 && BC1 == DA1) return "This Quadrangl is Paralelogram";
+                lineDA();
+                lineCD();
+                lineBC();
+                lineAB();
+                if (AB == CD && BC == DA) return "This Quadrangl is Paralelogram";
 
                 else return "This Quadrangl is  NOT Paralelogram";
 
