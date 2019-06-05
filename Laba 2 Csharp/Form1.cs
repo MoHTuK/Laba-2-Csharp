@@ -85,5 +85,16 @@ namespace Laba_2_Csharp
         {
             main.MaxMinArea(textBox10, Convert.ToInt32(numericUpDown2.Value));
         }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            main.save(textBox10);
+        }
+
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            main.import(textBox10);
+            main.showinfo(textBox10);
+        }
     }
 }
